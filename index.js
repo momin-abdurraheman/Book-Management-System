@@ -1,12 +1,16 @@
-const { response } = require("express");
-const express = require("express")
-// Importing Routes
+const express = require("express");
+const dotenv = require('dotenv');
+// database connection
+const DbConnection = require("./databaseConnection");
+// importing routes
 const usersRouter = require("./routes/users");
 const booksRouter = require("./routes/books");
-// Imported users file from data so that we can access it
-const { users } = require('./data/users.json');
+
+dotenv.config();
 
 const app = express();
+
+DbConnection();
 
 const PORT = 8081;
 
@@ -14,7 +18,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.status(200).json({
-        message: "Server is uptodate and running perfectly"
+        message: "Server is up and running",
     });
 });
 
@@ -22,11 +26,11 @@ app.use("/users", usersRouter);
 app.use("/books", booksRouter);
 
 app.get("*", (req, res) => {
-    response.status(404).json({
-        message: "This route does not exist"
-    })
-})
+    res.status(404).json({
+        message: "This route does not exist",
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`);
-})
+});
