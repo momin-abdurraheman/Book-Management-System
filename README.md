@@ -1,59 +1,44 @@
-# Book-Management-System
+book-record-management-10567
+This is a book record management API Backend for the management of records and books
 
-This is Book Record Management API based backend for the management of record and books
-
-# Routes and Endpoints
-
-## /users
-POST: create new user
-GET: get the list of all users
-
-## /users/{id}    //This is Dynamic Route
-GET: Get a user by id
-PUT: Update a user detail by id
-DELETE:  Delete a user by id(First check if he/she still has a issued book)(is there any fine to be paid)
+API Documentation link
 
 
-## /users/subscription-details/{id}
-GET: Get user subscription detail
-1-Date of subscription
-2-valid till
-3-Fine if any
+Routes and Endpoints
+/users
+POST: Create a new user ✅ GET: Get all list of users ✅
 
-## /books
-GET:Get all books
-POST: Add a new book
+/users/{id}
+GET: Get a user by id ✅ PUT: Update a user by id ✅ DELETE: Delete a user by id (check if he/she still has an issued book) (is there any fine to be paid) ✅
 
-## /books/{id}
-GET:Get a book by id
-PUT: Update a book by id
+/users/subscription-details/{id}
+GET: Get user subscription details ✅
 
+Date of subscription
+Valid till
+Fine if any
+/books
+GET: Get all books ✅ POST: Create/Add a new book ✅
 
-## /books/issued
-GET: Get list of all issued books
+/books/{id}
+GET: Get a book by id ✅ PUT: Update a book by id ✅
 
-## /bboks/issued/withFine
-GET:Get all issued books with fine on them
+/books/issued/by-user
+GET: Get all issued books✅
 
-# Subscription types
+/books/issued/withFine
+// TODO TASK // 🏁 GET: Get all issued books with fine
 
-basic(3 months)
-standard (6 months)
-premium(12 month)
+Subscription Types
+Basic (3 months) Standard (6 months) Premium (12 months)
 
+NOTE: dates will be in format mm/dd/yyyy
 
-if the subscription date is 01/08/22
-and the subscription type is standard 
-then valid date will be till 01/02/23
+If the subscription date is 01/08/22 and Subscription type is Standard the valid till date will be 01/02/23
 
-if he has an issued book and book needs to be returned on 
-01/01/23 and he missed the date of return it then he gets
-a fine of Rs. 100
+If he has an issued book and the issued book is to be returned at 01/01/23 If he missed the date of return, then he gts a fine of Rs. 100./
 
-
-if he has an issued book and book needs to be returned on 
-01/01/23 and he missed the date of return,and his subscription 
-also expires then he will get fine of Rs. 200 
+If he has an issued book and the issued book is to be returned at 01/01/23 If he missed the date of return, and his subscription also expires, then he will get a fine of Rs 200./
 
 
 

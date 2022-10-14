@@ -1,21 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-function Dbconnection() {
+function DbConnection() {
     const DB_URL = process.env.MONGO_URI;
 
-    mongoose.connect(DB_URL);
+    mongoose.connect(DB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
 
-    // Detail of the above connection is saved inside variable named Db
     const db = mongoose.connection;
 
-    // On will be called the whole time while once will be called only once 
     db.on("error", console.error.bind(console, "Connection error: "));
-    db.once('open', function () {
-        console.log("Database is connected ... ")
+    db.once("open", function () {
+        console.log("Db connected...");
+    });
+}
 
-    })
-
-
-};
-
-module.exports = Dbconnection;
+module.exports = DbConnection;
